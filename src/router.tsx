@@ -16,6 +16,7 @@ export interface RouterState {
   location: string;
   navigate: (route: string) => void;
   goBack: () => void;
+  clearHistory: () => void;
 }
 
 export interface LinkProps {
@@ -50,8 +51,8 @@ export function createRouterStore(
       persist(
         (set) => ({
           history: ["/"],
-          canGoBack: false,
           location: "/", // Default route
+          canGoBack: false,
           navigate: (route: string) =>
             set((state: RouterState) => ({
               history: [...state.history, route],
@@ -63,6 +64,12 @@ export function createRouterStore(
               location: state.history[state.history.length - 2],
               history: [...state.history].slice(0, -1),
               canGoBack: history.length > 1,
+            })),
+          clearHistory: () =>
+            set(() => ({
+              history: ["/"],
+              location: "/",
+              canGoBack: false,
             })),
         }),
         {
@@ -87,6 +94,12 @@ export function createRouterStore(
           location: state.history[state.history.length - 2],
           history: [...state.history].slice(0, -1),
           canGoBack: history.length > 1,
+        })),
+      clearHistory: () =>
+        set(() => ({
+          history: ["/"],
+          location: "/",
+          canGoBack: false,
         })),
     }));
   }
