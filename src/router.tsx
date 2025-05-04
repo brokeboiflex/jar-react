@@ -12,6 +12,7 @@ export interface RouteProps {
 
 export interface RouterState {
   history: string[];
+  canGoBack: boolean;
   location: string;
   navigate: (route: string) => void;
   goBack: () => void;
@@ -49,16 +50,19 @@ export function createRouterStore(
       persist(
         (set) => ({
           history: ["/"],
+          canGoBack: false,
           location: "/", // Default route
           navigate: (route: string) =>
             set((state: RouterState) => ({
               history: [...state.history, route],
               location: route,
+              canGoBack: history.length > 1,
             })),
           goBack: () =>
             set((state: RouterState) => ({
               location: state.history[state.history.length - 2],
               history: [...state.history].slice(0, -1),
+              canGoBack: history.length > 1,
             })),
         }),
         {
@@ -70,16 +74,19 @@ export function createRouterStore(
   } else {
     return create<RouterState>()((set) => ({
       history: ["/"],
+      canGoBack: false,
       location: "/", // Default route
       navigate: (route: string) =>
         set((state: RouterState) => ({
           history: [...state.history, route],
           location: route,
+          canGoBack: history.length > 1,
         })),
       goBack: () =>
         set((state: RouterState) => ({
           location: state.history[state.history.length - 2],
           history: [...state.history].slice(0, -1),
+          canGoBack: history.length > 1,
         })),
     }));
   }
