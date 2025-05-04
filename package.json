@@ -1,6 +1,6 @@
 {
   "name": "jar-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "JAR - a JSX Abstract Router",
   "main": "./dist/index.cjs",
   "module": "./dist/index.esm.js",
