@@ -1,6 +1,6 @@
 {
-  "name": "jar-preact",
-  "version": "1.0.0",
+  "name": "jar-react",
+  "version": "1.0.1",
   "description": "JAR - a JSX Abstract Router",
   "main": "./dist/index.cjs",
   "module": "./dist/index.esm.js",
@@ -30,7 +30,7 @@
     "microbundle": "^0.15.1"
   },
   "peerDependencies": {
-    "preact": "^10.22.1"
+    "react": "^16.0.0"
   },
   "dependencies": {
     "zustand": "^4.5.4",

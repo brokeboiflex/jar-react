@@ -11,7 +11,7 @@ Below is an example of usage in chrome extension development with [`zustand-chro
 ```ts
 //app.tsx
 import { ChromeSessionStorage } from "zustand-chrome-storage";
-import { Router, createRouterStore, createLink, Route } from "jar-rreact";
+import { Router, createRouterStore, createLink, Route } from "jar-react";
 
 // Assign unique id to make each tab have it's own router
 export const useRouter = createRouterStore(ChromeSessionStorage, uuidv4());
