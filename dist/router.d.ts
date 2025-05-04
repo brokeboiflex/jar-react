@@ -10,6 +10,7 @@ export interface RouteProps {
 }
 export interface RouterState {
     history: string[];
+    canGoBack: boolean;
     location: string;
     navigate: (route: string) => void;
     goBack: () => void;
