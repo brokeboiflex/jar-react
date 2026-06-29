@@ -1,4 +1,4 @@
-# JAR React
+# JAR
 
 JAR is a JSX Abstract Router for React and Preact. It keeps route state in a
 Zustand store instead of binding routing to `window.location`, which makes it a
@@ -7,24 +7,21 @@ surfaces.
 
 This package ships both framework adapters from one codebase:
 
-- React: `jar-react` or `jar-react/react`
-- Preact: `jar-react/preact`
-
-The unscoped npm package name `jar` belongs to an unrelated cookie package, so
-this package keeps the existing publishable `jar-react` name.
+- React: `jar` or `jar/react`
+- Preact: `jar/preact`
 
 ## Install
 
 React apps need React and Zustand:
 
 ```sh
-npm install jar-react react zustand
+npm install jar react zustand
 ```
 
 Preact apps need Preact and Zustand:
 
 ```sh
-npm install jar-react preact zustand
+npm install jar preact zustand
 ```
 
 React and Preact are optional peers so one framework does not force-install the
@@ -33,7 +30,7 @@ other. Zustand is the shared required peer.
 ## React Usage
 
 ```tsx
-import { Route, Router, createLink, createRouterStore } from "jar-react";
+import { Route, Router, createLink, createRouterStore } from "jar";
 import { getChromeSessionStorage } from "zustand-chrome-storage";
 
 export const useRouter = createRouterStore(getChromeSessionStorage(), "tab-1");
@@ -52,7 +49,7 @@ export default function App() {
 ## Preact Usage
 
 ```tsx
-import { Route, Router, createLink, createRouterStore } from "jar-react/preact";
+import { Route, Router, createLink, createRouterStore } from "jar/preact";
 import { getChromeSessionStorage } from "zustand-chrome-storage";
 
 export const useRouter = createRouterStore(getChromeSessionStorage(), "tab-1");
