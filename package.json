@@ -1,5 +1,5 @@
 {
-  "name": "jar-react",
+  "name": "jar",
   "version": "1.1.0",
   "description": "JAR - a JSX Abstract Router",
   "main": "./dist/index.cjs",
