@@ -1,14 +1,15 @@
 {
   "name": "jar-react",
-  "version": "1.0.22",
+  "version": "1.1.0",
   "description": "JAR - a JSX Abstract Router",
   "main": "./dist/index.cjs",
   "module": "./dist/index.esm.js",
   "unpkg": "./dist/index.umd.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "microbundle --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react --globals react/jsx-runtime=jsx",
-    "dev": "microbundle watch"
+    "build": "microbundle src/index.ts src/preact.ts --globals react=React,preact=preact,preact/hooks=preactHooks,zustand=zustand,zustand/vanilla=zustandVanilla,zustand/middleware=zustandMiddleware",
+    "dev": "microbundle watch src/index.ts src/preact.ts --globals react=React,preact=preact,preact/hooks=preactHooks,zustand=zustand,zustand/vanilla=zustandVanilla,zustand/middleware=zustandMiddleware",
+    "test": "npm run build && node --test"
   },
   "keywords": [
     "jsx",
@@ -19,21 +20,55 @@
   ],
   "author": "brokeboiflex",
   "license": "ISC",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "type": "module",
-  "source": "src/index.ts",
+  "source": [
+    "src/index.ts",
+    "src/preact.ts"
+  ],
   "exports": {
-    "types": "./dist/index.d.ts",
-    "require": "./dist/index.cjs",
-    "default": "./dist/index.esm.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.esm.js",
+      "default": "./dist/index.esm.js"
+    },
+    "./react": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.esm.js",
+      "default": "./dist/index.esm.js"
+    },
+    "./preact": {
+      "types": "./dist/preact.d.ts",
+      "require": "./dist/preact.cjs",
+      "import": "./dist/preact.esm.js",
+      "default": "./dist/preact.esm.js"
+    },
+    "./package.json": "./package.json"
   },
   "devDependencies": {
-    "microbundle": "^0.15.1"
+    "@types/react": "^18.3.27",
+    "microbundle": "^0.15.1",
+    "preact": "^10.28.0",
+    "react": "^18.3.1",
+    "zustand": "^5.0.14"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "preact": ">=10.0.0",
+    "react": ">=16.8 <20",
+    "zustand": ">=4.5.0 <6"
   },
-  "dependencies": {
-    "zustand": "^4.5.4",
-    "react": "^16.0.0"
+  "peerDependenciesMeta": {
+    "preact": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
   }
 }
