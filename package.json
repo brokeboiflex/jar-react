@@ -1,7 +1,8 @@
 {
-  "name": "jar",
+  "name": "jar-react",
   "version": "1.1.0",
-  "description": "JAR - a JSX Abstract Router",
+  "private": true,
+  "description": "Deprecated package source. Use jar from brokeboiflex/jar.",
   "main": "./dist/index.cjs",
   "module": "./dist/index.esm.js",
   "unpkg": "./dist/index.umd.js",
